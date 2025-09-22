@@ -1,0 +1,19 @@
+{
+  "MaxRecentFiles": 15,
+  "DefaultReaderId": "adobe-reader-default",
+  "AutoOpenWithAssignedReader": true,
+  "ShowNotifications": true,
+  "Theme": "Light",
+  "RecentFolders": [
+    "C:\\Users\\Usuario\\Documents",
+    "C:\\Users\\Usuario\\Downloads"
+  ],
+  "WindowSettings": {
+    "Width": 1000,
+    "Height": 700,
+    "CenterOnScreen": true,
+    "RememberPosition": false,
+    "Left": 0,
+    "Top": 0
+  }
+}

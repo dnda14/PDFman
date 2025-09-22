@@ -1,6 +1,5 @@
 ﻿using PDFman.Models;
-using PDFManager.Models;
-using PDFManager.ViewModels;
+using PDFman.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

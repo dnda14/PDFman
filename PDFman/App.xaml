@@ -1,36 +1,45 @@
-﻿<Application x:Class="PDFman.App"
+<Application x:Class="PDFman.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PDFman"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        <!-- Convertidores globales -->
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <ResourceDictionary Source="Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <!-- Estilos globales para mejorar la apariencia -->
-        <Style TargetType="Window">
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="13"/>
-        </Style>
+            <!-- Convertidores globales -->
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
-        <Style TargetType="TextBlock">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
-        </Style>
+            <!-- Paleta de colores -->
+            <SolidColorBrush x:Key="PrimaryBrush" Color="#007ACC"/>
+            <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#005F9E"/>
+            <SolidColorBrush x:Key="PrimaryPressBrush" Color="#004578"/>
+            <SolidColorBrush x:Key="SecondaryBrush" Color="#6C757D"/>
+            <SolidColorBrush x:Key="SecondaryHoverBrush" Color="#5A6268"/>
+            <SolidColorBrush x:Key="SecondaryPressBrush" Color="#495057"/>
+            <SolidColorBrush x:Key="DangerBrush" Color="#DC3545"/>
+            <SolidColorBrush x:Key="DangerHoverBrush" Color="#C82333"/>
+            <SolidColorBrush x:Key="DangerPressBrush" Color="#A71E2A"/>
+            <SolidColorBrush x:Key="SuccessBrush" Color="#28A745"/>
+            <SolidColorBrush x:Key="WarningBrush" Color="#FFC107"/>
+            <SolidColorBrush x:Key="InfoBrush" Color="#17A2B8"/>
 
-        <Style TargetType="ScrollBar">
-            <Setter Property="Width" Value="12"/>
-            <Setter Property="Background" Value="#F0F0F0"/>
-        </Style>
+            <!-- Colores de fondo y bordes -->
+            <SolidColorBrush x:Key="BackgroundBrush" Color="#F8F9FA"/>
+            <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="#E0E0E0"/>
+            <SolidColorBrush x:Key="BorderLightBrush" Color="#F0F0F0"/>
+            <SolidColorBrush x:Key="TextBrush" Color="#333333"/>
+            <SolidColorBrush x:Key="TextMutedBrush" Color="#666666"/>
+            <SolidColorBrush x:Key="TextLightBrush" Color="#999999"/>
 
-        <!-- Estilo para tooltips -->
-        <Style TargetType="ToolTip">
-            <Setter Property="Background" Value="#333"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#333"/>
-            <Setter Property="Padding" Value="8,4"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="HasDropShadow" Value="True"/>
-        </Style>
+            <!-- Colores del header -->
+            <SolidColorBrush x:Key="HeaderBrush" Color="#2C3E50"/>
+            <SolidColorBrush x:Key="HeaderTextBrush" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="HeaderTextMutedBrush" Color="#BDC3C7"/>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

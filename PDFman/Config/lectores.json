@@ -1,0 +1,23 @@
+[
+  {
+    "Id": "adobe-reader-default",
+    "Name": "Adobe Acrobat Reader",
+    "ExecutablePath": "C:\\Program Files\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe",
+    "IconPath": "",
+    "IsDefault": true
+  },
+  {
+    "Id": "edge-browser",
+    "Name": "Microsoft Edge",
+    "ExecutablePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "IconPath": "",
+    "IsDefault": false
+  },
+  {
+    "Id": "chrome-browser",
+    "Name": "Google Chrome",
+    "ExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "IconPath": "",
+    "IsDefault": false
+  }
+]

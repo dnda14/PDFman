@@ -3,19 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace PDFman.Services
-{
-    internal class configsservicio
-    {
-    }
-}
-
-
-namespace PDFManager.Services
 {
     public class ConfigurationService
     {
@@ -26,6 +17,12 @@ namespace PDFManager.Services
         private static readonly string ReadersConfigPath = Path.Combine(ConfigFolder, "lectores.json");
         private static readonly string AssignmentsConfigPath = Path.Combine(ConfigFolder, "asignaciones.json");
         private static readonly string AppConfigPath = Path.Combine(ConfigFolder, "config.json");
+
+        private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            PropertyNameCaseInsensitive = true
+        };
 
         public ConfigurationService()
         {
@@ -52,7 +49,6 @@ namespace PDFManager.Services
         {
             var readers = new List<PdfReader>();
 
-            // Adobe Acrobat Reader
             var adobePath = FindExecutable("AcroRd32.exe", @"Adobe\Acrobat Reader DC\Reader");
             if (adobePath != null)
             {
@@ -64,7 +60,6 @@ namespace PDFManager.Services
                 });
             }
 
-            // Microsoft Edge
             var edgePath = FindExecutable("msedge.exe", @"Microsoft\Edge\Application");
             if (edgePath != null)
             {
@@ -76,7 +71,6 @@ namespace PDFManager.Services
                 });
             }
 
-            // Firefox
             var firefoxPath = FindExecutable("firefox.exe", @"Mozilla Firefox");
             if (firefoxPath != null)
             {
@@ -88,7 +82,6 @@ namespace PDFManager.Services
                 });
             }
 
-            // Chrome
             var chromePath = FindExecutable("chrome.exe", @"Google\Chrome\Application");
             if (chromePath != null)
             {
@@ -128,7 +121,7 @@ namespace PDFManager.Services
                     return new List<PdfReader>();
 
                 var json = await File.ReadAllTextAsync(ReadersConfigPath);
-                return JsonConvert.DeserializeObject<List<PdfReader>>(json) ?? new List<PdfReader>();
+                return JsonSerializer.Deserialize<List<PdfReader>>(json, JsonOptions) ?? new List<PdfReader>();
             }
             catch
             {
@@ -140,7 +133,7 @@ namespace PDFManager.Services
         {
             try
             {
-                var json = JsonConvert.SerializeObject(readers, Formatting.Indented);
+                var json = JsonSerializer.Serialize(readers, JsonOptions);
                 await File.WriteAllTextAsync(ReadersConfigPath, json);
             }
             catch (Exception ex)
@@ -157,9 +150,8 @@ namespace PDFManager.Services
                     return new List<PdfAssignment>();
 
                 var json = await File.ReadAllTextAsync(AssignmentsConfigPath);
-                var assignments = JsonConvert.DeserializeObject<List<PdfAssignment>>(json) ?? new List<PdfAssignment>();
+                var assignments = JsonSerializer.Deserialize<List<PdfAssignment>>(json, JsonOptions) ?? new List<PdfAssignment>();
 
-                // Filtrar archivos que ya no existen
                 return assignments.Where(a => File.Exists(a.FilePath)).ToList();
             }
             catch
@@ -172,7 +164,7 @@ namespace PDFManager.Services
         {
             try
             {
-                var json = JsonConvert.SerializeObject(assignments, Formatting.Indented);
+                var json = JsonSerializer.Serialize(assignments, JsonOptions);
                 await File.WriteAllTextAsync(AssignmentsConfigPath, json);
             }
             catch (Exception ex)
@@ -189,7 +181,7 @@ namespace PDFManager.Services
                     return new AppConfig();
 
                 var json = await File.ReadAllTextAsync(AppConfigPath);
-                return JsonConvert.DeserializeObject<AppConfig>(json) ?? new AppConfig();
+                return JsonSerializer.Deserialize<AppConfig>(json, JsonOptions) ?? new AppConfig();
             }
             catch
             {
@@ -201,7 +193,7 @@ namespace PDFManager.Services
         {
             try
             {
-                var json = JsonConvert.SerializeObject(config, Formatting.Indented);
+                var json = JsonSerializer.Serialize(config, JsonOptions);
                 await File.WriteAllTextAsync(AppConfigPath, json);
             }
             catch (Exception ex)

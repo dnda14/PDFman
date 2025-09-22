@@ -1,4 +1,4 @@
-﻿<Window x:Class="PDFManager.Views.ReaderSelectionWindow"
+﻿<Window x:Class="PDFman.Views.ReaderSelectionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Seleccionar Lector PDF" 

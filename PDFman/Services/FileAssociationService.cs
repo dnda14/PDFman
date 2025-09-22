@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace PDFManager.Services
+namespace PDFman.Services
 {
     public class FileAssociationService
     {
